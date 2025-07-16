@@ -33,6 +33,7 @@ Router.delete("/:id", deleteUser);
 Router.get("/:id/profile",authenticate,profileUser)
 
 //add the users
-Router.post("/",authenticate,authorize("admin"), addUser);
+// Router.post("/",authenticate,authorize("admin"), addUser);
+Router.post("/", addUser);
 
 export default Router;
