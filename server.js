@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import userRouter from "./routes/userRoute.js";
 import productRouter from "./routes/productRoute.js";
+import orderRouter from "./routes/orderRoute.js"
 import dotenv from "dotenv";
 import cors from "cors";
 dotenv.config();
@@ -30,4 +31,5 @@ mongoose.connect(`mongodb+srv://${dbuser}:${dbpass}@cluster0.z4jiwo3.mongodb.net
 
 app.use("/api/users",userRouter);
 app.use("/api/products", productRouter);
+app.use("/api/orders", orderRouter);
 
