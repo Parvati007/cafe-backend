@@ -12,30 +12,27 @@ import {
 
 const Router = express.Router();
 
+//user routes
+Router.post("/register", register);
+Router.post("/login", login);
+Router.get("/:id/profile", profileUser);
+Router.patch("/:id", updateUser);
 
-//Register API
-Router.post("/register",register);
+//admin routes
 
-//Login API
-Router.post("/login",login);
+//Router.get("/showusers", authenticate, authorize("admin"), showusers);
+Router.get("/showusers", showusers);
 
-//display all the users in mongodb
-Router.get("/showusers",authenticate,authorize("admin"),showusers)
+//Router.post("/", authenticate, authorize("admin"), addUser);
+Router.post("/", addUser);
 
-//updating the user as admin API
-// Router.patch("/:id",authenticate,authorize("admin"),updateUser)
-Router.patch("/:id",authenticate,authorize("admin"), updateUser);
+//Router.get("/:id/profile", authenticate, authorize("admin"), profileUser);
+Router.get("/:id/profile", profileUser);
 
-// //deleting the user as admin API
-// Router.delete("/:id",authenticate,authorize("admin"),deleteUser)
-Router.delete("/:id",authenticate,authorize("admin"), deleteUser);
+//Router.patch("/:id", authenticate, authorize("admin"), updateUser);
+Router.patch("/:id", updateUser);
 
-//showing only one user details as admin API
-Router.get("/:id/profile",authenticate,authorize("admin"),profileUser)
-//Router.get("/:id/profile",authenticate,profileUser)
-
-//add the users
-// Router.post("/",authenticate,authorize("admin"), addUser);
-Router.post("/",authenticate,authorize("admin"), addUser);
+//Router.delete("/:id", authenticate, authorize("admin"), deleteUser);
+Router.delete("/:id", deleteUser);
 
 export default Router;
