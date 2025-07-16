@@ -12,6 +12,7 @@ import {
 
 const Router = express.Router();
 
+
 //Register API
 Router.post("/register",register);
 
@@ -19,21 +20,22 @@ Router.post("/register",register);
 Router.post("/login",login);
 
 //display all the users in mongodb
-Router.get("/showusers",showusers)
+Router.get("/showusers",authenticate,authorize("admin"),showusers)
 
 //updating the user as admin API
 // Router.patch("/:id",authenticate,authorize("admin"),updateUser)
-Router.patch("/:id", updateUser);
+Router.patch("/:id",authenticate,authorize("admin"), updateUser);
 
 // //deleting the user as admin API
 // Router.delete("/:id",authenticate,authorize("admin"),deleteUser)
-Router.delete("/:id", deleteUser);
+Router.delete("/:id",authenticate,authorize("admin"), deleteUser);
 
 //showing only one user details as admin API
-Router.get("/:id/profile",authenticate,profileUser)
+Router.get("/:id/profile",authenticate,authorize("admin"),profileUser)
+//Router.get("/:id/profile",authenticate,profileUser)
 
 //add the users
 // Router.post("/",authenticate,authorize("admin"), addUser);
-Router.post("/", addUser);
+Router.post("/",authenticate,authorize("admin"), addUser);
 
 export default Router;
