@@ -20,20 +20,20 @@ Router.patch("/:id", updateUser);
 
 //admin routes
 
-Router.get("/showusers", authenticate, authorize("admin"), showusers);
-//Router.get("/showusers", showusers);
+//Router.get("/showusers", authenticate, authorize("admin"), showusers);
+Router.get("/showusers", showusers);
 
-Router.post("/", authenticate, authorize("admin"), addUser);
-//Router.post("/", addUser);
+//Router.post("/", authenticate, authorize("admin"), addUser);
+Router.post("/", addUser);
 
-Router.get("/:id/profile", authenticate, authorize("admin"), profileUser);
-//Router.get("/:id/profile", profileUser);
+//Router.get("/:id/profile", authenticate, authorize("admin"), profileUser);
+Router.get("/:id/profile", profileUser);
 
-Router.patch("/:id", authenticate, authorize("admin"), updateUser);
-//Router.patch("/:id", updateUser);
+//Router.patch("/:id", authenticate, authorize("admin"), updateUser);
+Router.patch("/:id", updateUser);
 
-Router.delete("/:id", authenticate, authorize("admin"), deleteUser);
-//Router.delete("/:id", deleteUser);
+//Router.delete("/:id", authenticate, authorize("admin"), deleteUser);
+Router.delete("/:id", deleteUser);
 
 export default Router;
 
