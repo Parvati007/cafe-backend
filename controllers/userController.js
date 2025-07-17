@@ -50,15 +50,6 @@ const login=async (req,res)=>{
     }
 } 
 
-// const showusers=async(req,res)=>{
-//     try{
-//         const {page=1,limit=3}=req.query;
-//         const result = await userModel.find().skip(page-1).limit(limit);;
-//         res.status(200).json(result);
-//     }catch(err){}
-    
-// }
-
 const showusers = async (req, res) => {
   try {
     const { page = 1, limit = 3, search = "" } = req.query;
@@ -77,17 +68,6 @@ const showusers = async (req, res) => {
   }
 };
 
-// const updateUser=async(req,res)=>{
-//     try{
-//     const id=req.params.id;
-//     const body=req.body;
-//     const result =await userModel.findByIdAndUpdate(id,body);
-//     res.status(200).json(result);
-// }catch(err){
-//     console.log(err);
-//     res.status(400).json({message:"Something went wrong"});
-// }
-// }
 const updateUser = async (req, res) => {
   try {
     const id = req.params.id;
