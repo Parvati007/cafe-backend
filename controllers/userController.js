@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import userModel from "../models/userModels.js";
+import userModel from "../models/userModel.js";
 import jwt from "jsonwebtoken";
 const SECRET = "sometext";
 
