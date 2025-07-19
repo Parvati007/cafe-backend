@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import userModel from "../models/userModel.js";
+import userModel from "../models/userModels.js";
 import jwt from "jsonwebtoken";
 const SECRET = "sometext";
 
@@ -68,20 +68,18 @@ const showusers = async (req, res) => {
   }
 };
 
-const updateUser = async (req, res) => {
-  try {
-    const id = req.params.id;
-    const body = req.body;
-    if (body.password) {
-      body.password = await bcrypt.hash(body.password, 10);
-    }
-    const result = await userModel.findByIdAndUpdate(id, body);
+
+const updateUser=async(req,res)=>{
+    try{
+    const id=req.params.id;
+    const body=req.body;
+    const result =await userModel.findByIdAndUpdate(id,body);
     res.status(200).json(result);
-  } catch (err) {
+}catch(err){
     console.log(err);
-    res.status(400).json({ message: "Something went wrong" });
-  }
-};
+    res.status(400).json({message:"Something went wrong"});
+}
+}
 
 const deleteUser=async(req,res)=>{
     try{
@@ -104,8 +102,7 @@ const profileUser=async(req,res)=>{
         res.status(400).json({message:"Something went wrong"});
     }
  }
-
- const addUser = async (req, res) => {
+const addUser = async (req, res) => {
   try {
     const body = req.body;
     const hashedpwd = await bcrypt.hash(body.password, 10);
@@ -114,7 +111,7 @@ const profileUser=async(req,res)=>{
     res.status(200).json(result);
   } catch (err) {
     console.log(err);
-    res.status(500).json({ message: "Something went wrong" });
-  }
-};
+    res.status(500).json({ message: "Something went wrong" });
+  }
+}
  export {register,login,showusers,updateUser,deleteUser,profileUser,addUser};
