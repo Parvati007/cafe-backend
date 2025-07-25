@@ -7,7 +7,7 @@ import {
     updateUser, 
     deleteUser, 
     profileUser,
-    addUser  //addUser API for admin
+    addUser  
 } from "../controllers/userController.js";
 
 const Router = express.Router();
